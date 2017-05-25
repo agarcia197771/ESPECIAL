@@ -1,12 +1,30 @@
 <?php
 
+	function conexionString()
+	{
+		$xml=simplexml_load_file("conexion.xml");
+		echo $xml->host;
+		echo $xml->psw;
+		if ($xml->psw == '-')
+		{
+			$conn= mysqli_connect($xml->host,$xml->user,"",$xml->db);
+			echo "si";
+		}
+		else
+		{
+			$conn= mysqli_connect($xml->host,$xml->user,$xml->psw,$xml->db);
+		}
+		return $conn;
+	}
 
 	function listaSucursales()
 	{
 		
-		//$conexion = mysqli_connect("sql201.byethost9.com", "b9_19979145", "95020623", "b9_19979145_especial");
+		//$conexion = mysqli_connect("sql5c75d.carrierzone.com", "panaderial157992", "gaga770610", "especial__panaderial157992");
 		
-		$conexion = mysqli_connect("localhost", "root", "", "especial");
+		//$conexion = mysqli_connect("localhost", "root", "", "especial");
+		
+		$conexion = conexionString();
 		
 		echo $conexion->connect_error;
 		

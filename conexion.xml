@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conexion>
+	<host>localhost</host>
+	<user>root</user>
+	<psw>-</psw>
+	<db>especial</db>
+</conexion>
