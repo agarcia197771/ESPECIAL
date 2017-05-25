@@ -3,26 +3,34 @@
 	function conexionString()
 	{
 		$xml=simplexml_load_file("conexion.xml");
-		echo $xml->host;
-		echo $xml->psw;
-		if ($xml->psw == '-')
+		
+		/* INTENTA CONECTAR LOCALMENTE */
+		if ($xml->pswl == '-')
 		{
-			$conn= mysqli_connect($xml->host,$xml->user,"",$xml->db);
-			echo "si";
+			$conn= mysqli_connect($xml->hostl,$xml->userl,"",$xml->dbl);
 		}
 		else
 		{
-			$conn= mysqli_connect($xml->host,$xml->user,$xml->psw,$xml->db);
+			$conn= mysqli_connect($xml->hostl,$xml->userl,$xml->pswl,$xml->dbl);
 		}
+		
+		/* INTENTA CONECTAR REMOTAMENTE CON SERVIDOR WEB */
+		
+		if (mysqli_connect_errno()) 
+		{
+			$conn= mysqli_connect($xml->hostr,$xml->userr,$xml->pswr,$xml->dbr);
+			
+			if (mysqli_connect_errno()) 
+			{
+				$conn=0;
+			}
+		}
+		
 		return $conn;
 	}
 
 	function listaSucursales()
 	{
-		
-		//$conexion = mysqli_connect("sql5c75d.carrierzone.com", "panaderial157992", "gaga770610", "especial__panaderial157992");
-		
-		//$conexion = mysqli_connect("localhost", "root", "", "especial");
 		
 		$conexion = conexionString();
 		
@@ -66,10 +74,8 @@
 	function enviaMorralla($sucursal,$centavos,$peso,$dospesos)
 	{
 
-	  //$conexion = mysqli_connect("sql201.byethost9.com", "b9_19979145", "95020623", "b9_19979145_especial");
-	
-		$conexion = mysqli_connect("localhost", "root", "", "especial");
-		
+	  	$conexion = conexionString();
+			
 		date_default_timezone_set("America/Mexico_City");
 
 		$fecha = date("Y-m-d");
@@ -109,10 +115,8 @@
 
 	function muestraMorralla()
 	{
-		//$conexion = mysqli_connect("sql201.byethost9.com", "b9_19979145", "95020623", "b9_19979145_especial");
-	
-		$conexion = mysqli_connect("localhost", "root", "", "especial");
-		
+		$conexion = conexionString();
+			
 		date_default_timezone_set("America/Mexico_City");
 
 		$fecha = date("Y-m-d");
