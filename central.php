@@ -6,12 +6,11 @@
 <html>
 	<head>
 		 <link rel="stylesheet" href="style.css">
+		 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
 		 <script type="text/javascript">
-
 				window.setTimeout(function recarga(){location.reload();},5000);
-
-	 			
-		 
 		 </script>
 		 
 	</head>

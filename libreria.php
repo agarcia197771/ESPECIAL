@@ -5,6 +5,7 @@
 		$xml=simplexml_load_file("conexion.xml");
 		
 		/* INTENTA CONECTAR LOCALMENTE */
+		
 		if ($xml->pswl == '-')
 		{
 			$conn= mysqli_connect($xml->hostl,$xml->userl,"",$xml->dbl);
@@ -36,7 +37,7 @@
 		
 		echo $conexion->connect_error;
 		
-		$sql = 'SELECT id_suc, nom_suc FROM Sucursal';
+		$sql = 'SELECT id_suc, nom_suc FROM sucursal';
 		
 		$resultado = $conexion->query($sql); 
 		
@@ -73,9 +74,11 @@
 
 	function enviaMorralla($sucursal,$centavos,$peso,$dospesos)
 	{
+	  	
+		$conexion = conexionString();
 
-	  	$conexion = conexionString();
-			
+		echo $conexion->connect_error;
+	
 		date_default_timezone_set("America/Mexico_City");
 
 		$fecha = date("Y-m-d");
@@ -106,11 +109,9 @@
 		
 		$_SESSION['envio'] = 'La existecia fue enviada el día '.$fecha.' a las '.date("h:i:s"); 
 		
-		header('Location: index.php');
-					
-		
-		
-
+		echo '<script>window.location.href = "http://www.panaderialaespecial.com/test/";</script>';
+				
+	
 	}
 
 	function muestraMorralla()
@@ -137,7 +138,7 @@
 			if ($titulo == 1)
 			{
 				echo '<tr>';
-				echo '<td colspan="2" style="text-align:center;border:solid">';
+				echo '<td colspan="2" style="text-align:center;border:solid;background-color:#ff6600">';
 				echo 'Sucursal '.$row[0];
 				echo '</td>';
   				echo '</tr>';

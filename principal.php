@@ -22,7 +22,7 @@
 <html>
 	<head>
 		 <link rel="stylesheet" href="style.css">
-		 
+		 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	</head>
 
 <body>
@@ -46,7 +46,7 @@
 						083
 					</td>
 					<td class="tdClass">
-						<input type="number" name="centavos" value="<?php if(isset($_REQUEST['centavos'])){echo $_REQUEST['centavos'];}?>" class="titulo1" style="width:100px">
+						<input type="number" name="centavos" required="required" value="<?php if(isset($_REQUEST['centavos'])){echo $_REQUEST['centavos'];}?>" class="titulo1" style="width:100px">
 					</td>
 				</tr>
 				<tr>
@@ -57,18 +57,18 @@
 						084
 					</td>
 					<td class="tdClass">
-						<input type="number" name="peso" value="<?php if(isset($_REQUEST['peso'])){echo $_REQUEST['peso'];}?>" class="titulo1" style="width:100px">
+						<input type="number" name="peso" required="required" value="<?php if(isset($_REQUEST['peso'])){echo $_REQUEST['peso'];}?>" class="titulo1" style="width:100px">
 					</td>
 				</tr>
 				<tr>
 					<td class="tdClass">
-						<img src="imgs/dospesos.jpg" style="width:100px;height:100px">
+						<img src="imgs/dospesos.jpg"  style="width:100px;height:100px">
 					</td>
 					<td class="tdClass">
 						085
 					</td>
 					<td class="tdClass">
-						<input type="number" name="dospesos" value="<?php if(isset($_REQUEST['dospesos'])){echo $_REQUEST['dospesos'];}?>" class="titulo1" style="width:100px">
+						<input type="number" name="dospesos" required="required" value="<?php if(isset($_REQUEST['dospesos'])){echo $_REQUEST['dospesos'];}?>" class="titulo1" style="width:100px">
 					</td>
 				</tr>
 			</table>
@@ -88,12 +88,14 @@
 				($_REQUEST['centavos']>=0)&&
 				($_REQUEST['peso']>=0)&&
 				($_REQUEST['dospesos']>=0))
-			{
+			{ 
 				enviaMorralla($_SESSION['sucursal'], 
 							  $_REQUEST['centavos'],
 							  $_REQUEST['peso'],
 							  $_REQUEST['dospesos']);
-				
+
+					
+		
 					
 			}
 			else
