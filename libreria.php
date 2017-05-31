@@ -113,8 +113,7 @@
 				
 	
 	}
-
-	function muestraMorralla()
+	function generaTabla($sucursal)
 	{
 		$conexion = conexionString();
 			
@@ -122,44 +121,120 @@
 
 		$fecha = date("Y-m-d");
 		
-		$sql = "SELECT nom_suc, efectivo_id_efe, cantidad_se FROM sucursal_efectivo ".
+		echo '<table class="tableClass" style="font-size:20	px;font-family:arial;width:150px;margin-left:5px;margin-right:auto;margin-bottom:5px;float:left">';
+		
+		$sql = "SELECT cantidad_se FROM sucursal_efectivo ".
 				"INNER JOIN sucursal ". 
 				"ON sucursal_efectivo.Sucursal_id_suc = sucursal.id_suc ". 
-				"WHERE (fecha_se = "."'".$fecha."') ".
-				"ORDER BY  nom_suc, efectivo_id_efe ASC";
+				"WHERE ((fecha_se = "."'".$fecha."') ".
+				"AND (nom_suc ="."'".$sucursal."'"."))".
+				"ORDER BY efectivo_id_efe ASC";
 
 		$resultado = $conexion->query($sql); 
-
-		echo '<table class="tableClass" style="font-size:25px;font-family:arial;width:250px;margin-left:auto;margin-right:auto;margin-bottom:50px">';
-		$titulo=0;
-		while($row = mysqli_fetch_row($resultado)) 
-		{
-			$titulo++;
-			if ($titulo == 1)
-			{
-				echo '<tr>';
-				echo '<td colspan="2" style="text-align:center;border:solid;background-color:#ff6600">';
-				echo 'Sucursal '.$row[0];
-				echo '</td>';
-  				echo '</tr>';
-  			}
-  			if ($titulo == 3)
-			{
-				$titulo =0;
-			}
-			
-  			echo '<tr>';
-				echo '<td style="text-align:center">';
-				echo $row[1];
-				echo '</td>';
-				echo '<td style="text-align:center">';
-				echo $row[2];
-				echo '</td>';
-  			echo '</tr>';
-  			
-		}
 		
+		echo '<tr>';
+		echo '<td colspan="2" style="text-align:center;border:solid;background-color:#ff6600">';
+		echo utf8_encode($sucursal);
+		echo '</td>';
+  		echo '</tr>';
+
+  		echo '<tr>';
+		echo '<td style="text-align:center">';
+		echo "83";
+		echo '</td>';
+		echo '<td style="text-align:center">';
+		
+		if ($resultado->num_rows > 0)
+		{
+			$row = $resultado->fetch_array(MYSQLI_NUM);
+			echo $row[0];
+		}
+		else 
+			echo "?";
+			
+		echo '</td>';
+  		echo '</tr>';
+  			
+		echo '<tr>';
+		echo '<td style="text-align:center">';
+		echo "84";
+		echo '</td>';
+		echo '<td style="text-align:center">';
+		
+		if ($resultado->num_rows > 0)
+		{
+			$row = $resultado->fetch_array(MYSQLI_NUM);
+			echo $row[0];
+		}
+		else 
+			echo "?";
+		
+		echo '</td>';
+  		echo '</tr>';
+  		
+		echo '<tr>';
+		echo '<td style="text-align:center">';
+		echo "85";
+		echo '</td>';
+		echo '<td style="text-align:center">';
+		
+		if ($resultado->num_rows > 0)
+		{
+			$row = $resultado->fetch_array(MYSQLI_NUM);
+			echo $row[0];
+		}
+		else 
+			echo "?";
+		
+			echo '</td>';
+  		echo '</tr>';
+  		
 		echo "</table>";
+		
+		
+	}
+
+	function muestraMorralla()
+	{
+		generaTabla('COYOL');
+		generaTabla('DIAZ MIRÓN');
+		generaTabla('TORRENTES');
+		generaTabla('BRAVO');
+		generaTabla('ALEMAN');
+		generaTabla('DON JAMON');
+		generaTabla('CORTES');
+		generaTabla('PAGES');
+		generaTabla('BOMBEROS');
+		generaTabla('SERDAN');
+		generaTabla('INDEPENDENCIA');
+		generaTabla('ALLENDE');
+		generaTabla('MORALES');
+		generaTabla('URIBE');
+		generaTabla('ZARAGOZA');
+		generaTabla('COSTA VERDE');
+		generaTabla('BERNAL');
+		generaTabla('PALMAS');
+		generaTabla('ALACIO');
+		generaTabla('ESPAÑA');
+		generaTabla('BOCA');
+		generaTabla('FLORESTA');
+		generaTabla('LAGUNA');
+		generaTabla('MONTEALBAN');
+		generaTabla('VEGAS');
+		generaTabla('VOLCANES');
+		generaTabla('JUAN SOTO');
+		generaTabla('VISTAMAR');
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 

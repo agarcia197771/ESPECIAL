@@ -10,14 +10,14 @@
 
 
 		 <script type="text/javascript">
-				window.setTimeout(function recarga(){location.reload();},5000);
+				window.setTimeout(function recarga(){location.reload();},15000);
 		 </script>
 		 
 	</head>
 
 <body>
  
- 	<div class="divCentral">
+ 	<div class="divCentral" style="border: none;width:1000px;">
  	
  		<p class="titulo1" style="text-align: center;">
  	
