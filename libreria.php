@@ -225,17 +225,6 @@
 		generaTabla('JUAN SOTO');
 		generaTabla('VISTAMAR');
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 ?>
