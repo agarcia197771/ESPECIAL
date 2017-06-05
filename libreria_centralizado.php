@@ -31,7 +31,27 @@
 		$resultado = $conexion->query($sql); 
 
 		echo $resultado->num_rows;
+	}
+	
+	function inicializaCorte()
+	{
+		$conexion = conexionString();
+		
+		echo $conexion->connect_error;
+		
+		date_default_timezone_set("America/Mexico_City");
+
+		$fecha = date("Y-m-d");
+		
+		$sql = "SELECT id_corte FROM cortes ".
+			   "WHERE (fecha_corte =". "'".$fecha."')";
+		
+		$resultado = $conexion->query($sql); 
+		
+		echo $resultado->num_rows;
 		
 	}
+	
+	
 
 ?>

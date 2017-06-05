@@ -3,6 +3,9 @@
 	<head>
 		 <link rel="stylesheet" href="style.css">
 		 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		 <?php 
+		 	include 'libreria_centralizado.php';
+		 ?>
 	</head>
 
 <body>
@@ -20,6 +23,8 @@
   			echo $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
   		
  			echo'</p>';
+ 			
+ 			inicializaCorte();
   		?>
  		
  		<form action="vueltas_centralizado.php" method="post" style="width:250px;border:solid;margin-left:auto;margin-right: auto">
