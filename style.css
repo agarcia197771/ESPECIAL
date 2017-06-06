@@ -37,6 +37,14 @@
 	font-family: arial;
 	font-size: 40px;	
 }
+.tdClassMenor
+{
+	border:solid;
+	width: 200px;	
+	text-align: center;
+	font-family: arial;
+	font-size: 30px;	
+}
 
 .error
 {

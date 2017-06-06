@@ -17,8 +17,12 @@
 		return $conn;
 	}
 
-	function obtenNoVuelta($fecha)
+	function obtenNoVuelta()
 	{
+		date_default_timezone_set("America/Mexico_City");
+
+		$fecha = date("Y-m-d");
+		
 		$conexion = conexionString();
 		
 		echo $conexion->connect_error;
@@ -29,8 +33,13 @@
 			   "WHERE (cortes.fecha_corte =". "'".$fecha."')";
 		
 		$resultado = $conexion->query($sql); 
-
-		echo $resultado->num_rows;
+		
+		$vuelta = $resultado->num_rows + 1;
+		
+		$conexion->close();
+		
+		return $vuelta;
+		
 	}
 	
 	function inicializaCorte()
@@ -48,8 +57,14 @@
 		
 		$resultado = $conexion->query($sql); 
 		
-		echo $resultado->num_rows;
+		if ($resultado->num_rows == 0)
+		{
+			$sql = "INSERT INTO cortes VALUES (NULL,"."'".$fecha."',"."0)";
 		
+				$resultado = $conexion->query($sql); 
+		
+		}
+		$conexion->close();
 	}
 	
 	

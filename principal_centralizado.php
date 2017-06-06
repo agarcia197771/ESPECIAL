@@ -27,11 +27,8 @@
  			inicializaCorte();
   		?>
  		
- 		<form action="vueltas_centralizado.php" method="post" style="width:250px;border:solid;margin-left:auto;margin-right: auto">
-			<input type="submit" value="Capturar Efectivo" style="font-size: 30px">
-		</form>
-		
-		
+ 		<a href="vueltas_centralizado.php">Capturar Efectivo </a>
+ 		
 
 	</div>  
 </body>
