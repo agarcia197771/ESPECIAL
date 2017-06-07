@@ -5,6 +5,7 @@
 		 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		 <?php 
 		 	include 'libreria_centralizado.php';
+		 	session_start();
 		 ?>
 	</head>
 
@@ -24,7 +25,7 @@
   		
  			echo'</p>';
  			
- 			inicializaCorte();
+ 			$_SESSION['corte'] = inicializaCorte();
   		?>
  		
  		<a href="vueltas_centralizado.php">Capturar Efectivo </a>
